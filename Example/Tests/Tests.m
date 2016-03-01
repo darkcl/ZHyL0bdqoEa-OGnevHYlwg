@@ -8,37 +8,30 @@
 
 // https://github.com/kiwi-bdd/Kiwi
 
+#import <AfterShipKit/AfterShipKit.h>
+
 SPEC_BEGIN(InitialTests)
 
-describe(@"My initial tests", ^{
-
-  context(@"will fail", ^{
-
-      it(@"can do maths", ^{
-          [[@1 should] equal:@2];
-      });
-
-      it(@"can read", ^{
-          [[@"number" should] equal:@"string"];
-      });
-    
-      it(@"will wait and fail", ^{
-          NSObject *object = [[NSObject alloc] init];
-          [[expectFutureValue(object) shouldEventually] receive:@selector(autoContentAccessingProxy)];
-      });
-  });
-
-  context(@"will pass", ^{
-    
-      it(@"can do maths", ^{
-        [[@1 should] beLessThan:@23];
-      });
-    
-      it(@"can read", ^{
-          [[@"team" shouldNot] containString:@"I"];
-      });  
-  });
-  
+describe(@"AfterShipKit tests", ^{
+    context(@"Fetching service data", ^{
+        
+        it(@"should fail if api key is not set", ^{
+            __block NSError *fetchedErr = nil;
+            AfterShipKit *testManager = [[AfterShipKit alloc] init];
+            
+            [testManager fetchTrackingInfoWithSlug:@""
+                                       trackNumber:@""
+                                           success:^(NSDictionary *dict) {
+                                               
+                                           }
+                                           failure:^(NSError *err) {
+                                               fetchedErr = err;
+                                           }];
+            
+            [[expectFutureValue(fetchedErr) shouldEventually] beNonNil];
+        });
+        
+    });
 });
 
 SPEC_END

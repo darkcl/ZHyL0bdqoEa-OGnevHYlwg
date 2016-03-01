@@ -21,5 +21,10 @@
     "AfterShipKit": [
       "Pod/Assets/*.png"
     ]
+  },
+  "dependencies": {
+    "AFNetworking": [
+      "~> 2.3"
+    ]
   }
 }

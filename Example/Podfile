@@ -1,5 +1,4 @@
 source 'https://github.com/CocoaPods/Specs.git'
-use_frameworks!
 
 target 'AfterShipKit_Example', :exclusive => true do
   pod 'AfterShipKit', :path => '../'
@@ -7,6 +6,6 @@ end
 
 target 'AfterShipKit_Tests', :exclusive => true do
   pod 'AfterShipKit', :path => '../'
-
+  pod 'Nocilla'
   pod 'Kiwi'
 end
