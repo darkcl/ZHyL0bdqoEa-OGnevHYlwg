@@ -1,0 +1,6 @@
+framework module AfterShipKit {
+  umbrella header "AfterShipKit-umbrella.h"
+
+  export *
+  module * { export * }
+}

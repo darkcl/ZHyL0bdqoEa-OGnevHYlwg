@@ -1,0 +1,17 @@
+PODS:
+  - AfterShipKit (0.1.0)
+  - Kiwi (2.4.0)
+
+DEPENDENCIES:
+  - AfterShipKit (from `../`)
+  - Kiwi
+
+EXTERNAL SOURCES:
+  AfterShipKit:
+    :path: ../
+
+SPEC CHECKSUMS:
+  AfterShipKit: 89d983e75dd1fdc38899c46fe6b0d46b88603b99
+  Kiwi: f49c9d54b28917df5928fe44968a39ed198cb8a8
+
+COCOAPODS: 0.39.0
