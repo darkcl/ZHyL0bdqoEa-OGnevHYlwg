@@ -8,6 +8,7 @@
 
 #import <XCTest/XCTest.h>
 #import <AfterShipKit/AfterShipKit.h>
+#import <Nocilla/Nocilla.h>
 
 @interface AfterShipKit_Test : XCTestCase{
     AfterShipKit *testManager;
@@ -93,7 +94,7 @@
 }
 
 - (void)testWrongTrackingNumber {
-    XCTestExpectation *expectation = [self expectationWithDescription:@"Testing Fulfill all parameter"];
+    XCTestExpectation *expectation = [self expectationWithDescription:@"Testing wrong track number"];
     
     [testManager setAPIKey:@"a71a336b-aaff-43f9-b98d-e19aa83cd93b"];
     
@@ -104,7 +105,8 @@
                                        [expectation fulfill];
                                    }
                                    failure:^(NSError *err) {
-                                       XCTAssertNotNil(err);
+                                       XCTAssertEqual(err.domain, @"com.aftership.error");
+                                       XCTAssertEqual(err.code, 4004);
                                        [expectation fulfill];
                                    }];
     [self waitForExpectationsWithTimeout:30.0
@@ -112,5 +114,28 @@
                                      XCTAssertNil(error);
                                  }];
 }
+
+- (void)testWrongSlugName {
+    XCTestExpectation *expectation = [self expectationWithDescription:@"Testing wrong slug name"];
+    
+    [testManager setAPIKey:@"a71a336b-aaff-43f9-b98d-e19aa83cd93b"];
+    
+    [testManager fetchTrackingInfoWithSlug:@"dhl-is-awesome"
+                               trackNumber:@"1234567893"
+                                   success:^(NSDictionary *dict) {
+                                       XCTFail(@"Should not have response");
+                                       [expectation fulfill];
+                                   }
+                                   failure:^(NSError *err) {
+                                       XCTAssertEqual(err.domain, @"com.aftership.error");
+                                       XCTAssertEqual(err.code, 4010);
+                                       [expectation fulfill];
+                                   }];
+    [self waitForExpectationsWithTimeout:30.0
+                                 handler:^(NSError * _Nullable error) {
+                                     XCTAssertNil(error);
+                                 }];
+}
+
 
 @end

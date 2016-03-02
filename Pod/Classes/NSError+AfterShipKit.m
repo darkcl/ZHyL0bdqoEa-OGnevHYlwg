@@ -13,7 +13,14 @@ NSString * const kAferShipErrorDomain = @"com.aftership.error";
 @implementation NSError (AfterShipKit)
 
 + (NSError *)errorWithResponse:(NSDictionary *)response{
-    return nil;
+    NSInteger responseCode = [response[@"meta"][@"code"] integerValue];
+    if (responseCode == 200) {
+        return nil;
+    }else{
+        return [NSError errorWithDomain:kAferShipErrorDomain
+                                   code:responseCode
+                               userInfo:@{NSLocalizedDescriptionKey : response[@"meta"][@"message"]}];
+    }
 }
 
 + (NSError *)missingApiKey{
