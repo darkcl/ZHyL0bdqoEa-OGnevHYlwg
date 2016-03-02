@@ -35,6 +35,7 @@
     
     AFJSONRequestSerializer *requestSerializer = [AFJSONRequestSerializer serializer];
     [requestSerializer setValue:apiKey forHTTPHeaderField:@"aftership-api-key"];
+    [requestSerializer setValue:@"1.0.0" forHTTPHeaderField:@"aftership-ios-sdk"];
     requestSerializer.HTTPShouldHandleCookies = NO;
     manager.requestSerializer = requestSerializer;
 }
