@@ -42,8 +42,15 @@
 
 - (void)fetchTrackingInfoWithSlug:(NSString *)slug
                       trackNumber:(NSString *)trackNumber
+                           fields:(NSArray<NSString *> *)fields
                           success:(void (^)(NSDictionary* dict))successBlock
-                          failure:(void (^)(NSError* dict))errorBlock{
+                          failure:(void (^)(NSError* err))errorBlock{
+    
+    NSMutableDictionary *param;
+    if (fields.count > 0) {
+        param = [[NSMutableDictionary alloc] init];
+        [param setObject:fields forKey:@"fields"];
+    }
     
     if (apiKey == nil) {
         errorBlock([NSError missingApiKey]);
@@ -51,7 +58,7 @@
         errorBlock([NSError missingParameters]);
     }else{
         [manager GET:[NSString stringWithFormat:@"/v4/trackings/%@/%@", slug, trackNumber]
-          parameters:nil
+          parameters:param
              success:^(NSURLSessionDataTask * _Nonnull task, id  _Nonnull responseObject) {
                  successBlock(responseObject);
              }
