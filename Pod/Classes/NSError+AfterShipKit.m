@@ -8,7 +8,7 @@
 
 #import "NSError+AfterShipKit.h"
 
-NSString * const kAferShipErrorDomain = @"com.afertship.error";
+NSString * const kAferShipErrorDomain = @"com.aftership.error";
 
 @implementation NSError (AfterShipKit)
 
@@ -20,6 +20,12 @@ NSString * const kAferShipErrorDomain = @"com.afertship.error";
     return [NSError errorWithDomain:kAferShipErrorDomain
                                code:0
                            userInfo:@{NSLocalizedDescriptionKey : @"Missing Api key"}];
+}
+
++ (NSError *)missingParameters{
+    return [NSError errorWithDomain:kAferShipErrorDomain
+                               code:1
+                           userInfo:@{NSLocalizedDescriptionKey : @"Missing Parameters"}];
 }
 
 @end

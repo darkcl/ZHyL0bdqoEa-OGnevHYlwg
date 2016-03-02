@@ -1,19 +1,19 @@
 {
   "name": "AfterShipKit",
   "version": "0.1.0",
-  "summary": "A short description of AfterShipKit.",
-  "description": "",
-  "homepage": "https://github.com/<GITHUB_USERNAME>/AfterShipKit",
+  "summary": "AfterShip api wrapper.",
+  "description": "An AfterShip api wrapper using AFNetworking",
+  "homepage": "https://github.com/darkcl/ZHyL0bdqoEa-OGnevHYlwg",
   "license": "MIT",
   "authors": {
     "Yeung Yiu Hung": "hkclex@gmail.com"
   },
   "source": {
-    "git": "https://github.com/<GITHUB_USERNAME>/AfterShipKit.git",
+    "git": "https://github.com/darkcl/ZHyL0bdqoEa-OGnevHYlwg.git",
     "tag": "0.1.0"
   },
   "platforms": {
-    "ios": "7.0"
+    "ios": "7.1"
   },
   "requires_arc": true,
   "source_files": "Pod/Classes/**/*",

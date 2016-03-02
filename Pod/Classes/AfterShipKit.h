@@ -7,9 +7,8 @@
 //
 
 #import <Foundation/Foundation.h>
-#import <AFNetworking/AFNetworking.h>
 
-typedef void (^SLShareSuccess)(NSDictionary* message);
+@class AFHTTPSessionManager;
 
 @interface AfterShipKit : NSObject{
     AFHTTPSessionManager *manager;

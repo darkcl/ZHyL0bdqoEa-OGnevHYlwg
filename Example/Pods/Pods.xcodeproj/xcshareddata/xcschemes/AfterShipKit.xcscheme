@@ -14,7 +14,7 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = '39EF763D1923E4574EC1CF00'
+               BlueprintIdentifier = 'B9A780F9FB5F0DBD8811E248'
                BlueprintName = 'AfterShipKit'
                ReferencedContainer = 'container:Pods.xcodeproj'
                BuildableName = 'libAfterShipKit.a'>

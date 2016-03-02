@@ -7,6 +7,8 @@
 //
 
 #import "AfterShipKit.h"
+
+#import <AFNetworking/AFNetworking.h>
 #import "NSError+AfterShipKit.h"
 
 @implementation AfterShipKit
@@ -22,7 +24,7 @@
 
 - (id)init{
     if (self = [super init]) {
-        manager = [[AFHTTPSessionManager alloc] initWithBaseURL:[NSURL URLWithString:@"https://api.aftership.com/v4"]];
+        manager = [[AFHTTPSessionManager alloc] initWithBaseURL:[NSURL URLWithString:@"https://api.aftership.com"]];
         manager.responseSerializer = [AFJSONResponseSerializer serializer];
     }
     return self;
@@ -33,6 +35,7 @@
     
     AFJSONRequestSerializer *requestSerializer = [AFJSONRequestSerializer serializer];
     [requestSerializer setValue:apiKey forHTTPHeaderField:@"aftership-api-key"];
+    requestSerializer.HTTPShouldHandleCookies = NO;
     manager.requestSerializer = requestSerializer;
 }
 
@@ -43,8 +46,10 @@
     
     if (apiKey == nil) {
         errorBlock([NSError missingApiKey]);
+    }else if (slug.length == 0 || trackNumber.length == 0) {
+        errorBlock([NSError missingParameters]);
     }else{
-        [manager GET:[NSString stringWithFormat:@"/trackings/%@/%@", slug, trackNumber]
+        [manager GET:[NSString stringWithFormat:@"/v4/trackings/%@/%@", slug, trackNumber]
           parameters:nil
              success:^(NSURLSessionDataTask * _Nonnull task, id  _Nonnull responseObject) {
                  successBlock(responseObject);
