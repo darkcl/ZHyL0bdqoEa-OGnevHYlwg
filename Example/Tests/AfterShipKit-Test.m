@@ -8,7 +8,7 @@
 
 #import <XCTest/XCTest.h>
 #import <AfterShipKit/AfterShipKit.h>
-#import <Nocilla/Nocilla.h>
+#import <OHHTTPStubs/OHHTTPStubs.h>
 
 @interface AfterShipKit_Test : XCTestCase{
     AfterShipKit *testManager;
@@ -22,6 +22,7 @@
     [super setUp];
     // Put setup code here. This method is called before the invocation of each test method in the class.
     testManager = [[AfterShipKit alloc] init];
+    
 }
 
 - (void)tearDown {
@@ -135,6 +136,39 @@
                                  handler:^(NSError * _Nullable error) {
                                      XCTAssertNil(error);
                                  }];
+}
+
+
+- (void)testWrongResponseType {
+    XCTestExpectation *expectation = [self expectationWithDescription:@"Testing non json response"];
+    
+    [OHHTTPStubs stubRequestsPassingTest:^BOOL(NSURLRequest *request) {
+        return [request.URL.absoluteString isEqualToString:@"https://api.aftership.com/v4/trackings/dhl/1234567893"];
+    } withStubResponse:^OHHTTPStubsResponse*(NSURLRequest *request) {
+        NSString* fixture = @"It's a stub!";
+        return [OHHTTPStubsResponse responseWithData:[fixture dataUsingEncoding:NSUTF8StringEncoding]
+                                          statusCode:200
+                                             headers:@{@"Content-Type":@"text/plain"}];
+    }];
+    
+    [testManager setAPIKey:@"a71a336b-aaff-43f9-b98d-e19aa83cd93b"];
+    
+    [testManager fetchTrackingInfoWithSlug:@"dhl"
+                               trackNumber:@"1234567893"
+                                   success:^(NSDictionary *dict) {
+                                       XCTFail(@"Should not have response");
+                                       [expectation fulfill];
+                                   }
+                                   failure:^(NSError *err) {
+                                       XCTAssertNotNil(err);
+                                       [expectation fulfill];
+                                   }];
+    [self waitForExpectationsWithTimeout:30.0
+                                 handler:^(NSError * _Nullable error) {
+                                     XCTAssertNil(error);
+                                 }];
+    
+    [OHHTTPStubs removeAllStubs];
 }
 
 

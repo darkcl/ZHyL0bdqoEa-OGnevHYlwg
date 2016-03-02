@@ -6,5 +6,5 @@ end
 
 target 'AfterShipKit_Tests', :exclusive => true do
   pod 'AfterShipKit', :path => '../'
-  pod 'Nocilla'
+  pod 'OHHTTPStubs'
 end
