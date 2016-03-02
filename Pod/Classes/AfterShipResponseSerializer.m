@@ -8,15 +8,22 @@
 
 #import "AfterShipResponseSerializer.h"
 #import "NSError+AfterShipKit.h"
+#import <KZPropertyMapper/KZPropertyMapper.h>
+
+#import "AfterShipTrackingInfo.h"
 
 @implementation AfterShipResponseSerializer
+
+- (void)setExpectedResponseClass:(Class)aClass
+                         isArray:(BOOL)isArray{
+    responseClass = aClass;
+    isNextResponseArray = isArray;
+}
 
 - (id)responseObjectForResponse:(NSURLResponse *)response
                            data:(NSData *)data
                           error:(NSError *__autoreleasing *)error
 {
-    NSLog(@"test subclass");
-    
     NSError *responseError;
     id responseObject = [super responseObjectForResponse:response
                                                     data:data
@@ -37,7 +44,17 @@
         }
     }
     
-    return responseObject;
+    if (*error) {
+        return responseObject;
+    }else{
+        if ([responseClass instancesRespondToSelector:@selector(initWithInfo:)]) {
+            id obj = [[responseClass alloc] initWithInfo:responseObject[@"data"]];
+            return obj;
+        }else{
+            *error = [NSError mappingError];
+            return responseObject;
+        }
+    }
 }
 
 @end

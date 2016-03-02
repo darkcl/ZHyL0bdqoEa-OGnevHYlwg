@@ -35,4 +35,10 @@ NSString * const kAferShipErrorDomain = @"com.aftership.error";
                            userInfo:@{NSLocalizedDescriptionKey : @"Missing Parameters"}];
 }
 
++ (NSError *)mappingError{
+    return [NSError errorWithDomain:kAferShipErrorDomain
+                               code:2
+                           userInfo:@{NSLocalizedDescriptionKey : @"Mapping Object Error"}];
+}
+
 @end

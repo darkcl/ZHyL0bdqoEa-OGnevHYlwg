@@ -7,6 +7,8 @@
 //
 
 #import "AfterShipKit.h"
+
+#import "AfterShipTrackingInfo.h"
 #import "AfterShipResponseSerializer.h"
 
 #import <AFNetworking/AFNetworking.h>
@@ -26,7 +28,6 @@
 - (id)init{
     if (self = [super init]) {
         manager = [[AFHTTPSessionManager alloc] initWithBaseURL:[NSURL URLWithString:@"https://api.aftership.com"]];
-        manager.responseSerializer = [AfterShipResponseSerializer serializer];
     }
     return self;
 }
@@ -44,9 +45,12 @@
 - (void)fetchTrackingInfoWithSlug:(NSString *)slug
                       trackNumber:(NSString *)trackNumber
                            fields:(NSArray<NSString *> *)fields
-                          success:(void (^)(NSDictionary* dict))successBlock
+                          success:(void (^)(AfterShipTrackingInfo* trackingInfo))successBlock
                           failure:(void (^)(NSError* err))errorBlock{
-    
+    AfterShipResponseSerializer *serializer = [AfterShipResponseSerializer serializer];
+    [serializer setExpectedResponseClass:[AfterShipTrackingInfo class]
+                                 isArray:NO];
+    manager.responseSerializer = serializer;
     NSMutableDictionary *param;
     if (fields.count > 0) {
         param = [[NSMutableDictionary alloc] init];

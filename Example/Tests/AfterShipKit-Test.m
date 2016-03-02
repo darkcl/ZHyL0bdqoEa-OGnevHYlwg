@@ -37,7 +37,7 @@
     [testManager fetchTrackingInfoWithSlug:@""
                                trackNumber:@""
                                     fields:nil
-                                   success:^(NSDictionary *dict) {
+                                   success:^(AfterShipTrackingInfo* trackingInfo) {
                                        XCTFail(@"Should not have response");
                                        [expectation fulfill];
                                    }
@@ -60,7 +60,7 @@
     [testManager fetchTrackingInfoWithSlug:@""
                                trackNumber:@""
                                     fields:nil
-                                   success:^(NSDictionary *dict) {
+                                   success:^(AfterShipTrackingInfo* trackingInfo) {
                                        XCTFail(@"Should not have response");
                                        [expectation fulfill];
                                    }
@@ -83,8 +83,9 @@
     [testManager fetchTrackingInfoWithSlug:@"dhl"
                                trackNumber:@"1234567893"
                                     fields:nil
-                                   success:^(NSDictionary *dict) {
-                                       XCTAssertNotNil(dict);
+                                   success:^(AfterShipTrackingInfo* trackingInfo) {
+                                       
+                                       XCTAssertNotNil(trackingInfo);
                                        [expectation fulfill];
                                    }
                                    failure:^(NSError *err) {
@@ -105,7 +106,7 @@
     [testManager fetchTrackingInfoWithSlug:@"dhl"
                                trackNumber:@"12345678931234"
                                     fields:nil
-                                   success:^(NSDictionary *dict) {
+                                   success:^(AfterShipTrackingInfo* trackingInfo) {
                                        XCTFail(@"Should not have response");
                                        [expectation fulfill];
                                    }
@@ -128,7 +129,7 @@
     [testManager fetchTrackingInfoWithSlug:@"dhl-is-awesome"
                                trackNumber:@"1234567893"
                                     fields:nil
-                                   success:^(NSDictionary *dict) {
+                                   success:^(AfterShipTrackingInfo* trackingInfo) {
                                        XCTFail(@"Should not have response");
                                        [expectation fulfill];
                                    }
@@ -161,7 +162,7 @@
     [testManager fetchTrackingInfoWithSlug:@"dhl"
                                trackNumber:@"1234567893"
                                     fields:nil
-                                   success:^(NSDictionary *dict) {
+                                   success:^(AfterShipTrackingInfo* trackingInfo) {
                                        XCTFail(@"Should not have response");
                                        [expectation fulfill];
                                    }

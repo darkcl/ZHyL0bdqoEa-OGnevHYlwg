@@ -25,6 +25,9 @@
   "dependencies": {
     "AFNetworking": [
       "~> 2.3"
+    ],
+    "KZPropertyMapper": [
+
     ]
   }
 }

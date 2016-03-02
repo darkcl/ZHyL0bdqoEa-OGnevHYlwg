@@ -22,6 +22,8 @@ PODS:
     - AFNetworking/NSURLSession
   - AfterShipKit (0.1.0):
     - AFNetworking (~> 2.3)
+    - KZPropertyMapper
+  - KZPropertyMapper (2.6)
   - OHHTTPStubs (4.7.1):
     - OHHTTPStubs/Default (= 4.7.1)
   - OHHTTPStubs/Core (4.7.1)
@@ -46,7 +48,8 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   AFNetworking: cb8d14a848e831097108418f5d49217339d4eb60
-  AfterShipKit: 088b8090ac2f87bf67309278c256d79b3b4190c6
+  AfterShipKit: 6eed04b6d2554e700f752a297da8d486a02d043a
+  KZPropertyMapper: bcaabe1ec5b4368acb8092faf40666096ba9bb23
   OHHTTPStubs: f7d1604d04d37d055460c0ef9af01bb249ded0fa
 
 COCOAPODS: 0.39.0

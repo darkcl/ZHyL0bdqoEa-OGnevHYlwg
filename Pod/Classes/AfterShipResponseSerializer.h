@@ -8,6 +8,12 @@
 
 #import <AFNetworking/AFNetworking.h>
 
-@interface AfterShipResponseSerializer : AFJSONResponseSerializer
+@interface AfterShipResponseSerializer : AFJSONResponseSerializer{
+    Class responseClass;
+    BOOL isNextResponseArray;
+}
+
+- (void)setExpectedResponseClass:(Class)aClass
+                         isArray:(BOOL)isArray;
 
 @end

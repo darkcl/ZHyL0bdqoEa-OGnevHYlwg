@@ -13,5 +13,6 @@
 + (NSError *)errorWithResponse:(NSDictionary *)response;
 + (NSError *)missingApiKey;
 + (NSError *)missingParameters;
++ (NSError *)mappingError;
 
 @end

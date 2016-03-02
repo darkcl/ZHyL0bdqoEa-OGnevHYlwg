@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@class AFHTTPSessionManager;
+@class AFHTTPSessionManager, AfterShipTrackingInfo;
 
 @interface AfterShipKit : NSObject{
     AFHTTPSessionManager *manager;
@@ -22,7 +22,7 @@
 - (void)fetchTrackingInfoWithSlug:(NSString *)slug
                       trackNumber:(NSString *)trackNumber
                            fields:(NSArray<NSString *> *)fields
-                          success:(void (^)(NSDictionary* dict))successBlock
+                          success:(void (^)(AfterShipTrackingInfo* trackingInfo))successBlock
                           failure:(void (^)(NSError* err))errorBlock;
 
 @end
