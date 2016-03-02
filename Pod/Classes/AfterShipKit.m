@@ -7,6 +7,7 @@
 //
 
 #import "AfterShipKit.h"
+#import "AfterShipResponseSerializer.h"
 
 #import <AFNetworking/AFNetworking.h>
 #import "NSError+AfterShipKit.h"
@@ -25,7 +26,7 @@
 - (id)init{
     if (self = [super init]) {
         manager = [[AFHTTPSessionManager alloc] initWithBaseURL:[NSURL URLWithString:@"https://api.aftership.com"]];
-        manager.responseSerializer = [AFJSONResponseSerializer serializer];
+        manager.responseSerializer = [AfterShipResponseSerializer serializer];
     }
     return self;
 }
@@ -63,21 +64,7 @@
                  successBlock(responseObject);
              }
              failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-                 NSData *errorResponseData= error.userInfo[AFNetworkingOperationFailingURLResponseDataErrorKey];
-                 if (errorResponseData != nil) {
-                     NSError *jsonError;
-                     NSDictionary *errorResponseDict = [NSJSONSerialization JSONObjectWithData:errorResponseData
-                                                                                       options:NSJSONReadingAllowFragments
-                                                                                         error:&jsonError];
-                     if (jsonError == nil) {
-                         errorBlock([NSError errorWithResponse:errorResponseDict]);
-                     }else{
-                         errorBlock(error);
-                     }
-                     
-                 }else{
-                     errorBlock(error);
-                 }
+                 errorBlock(error);
              }];
     }
 }

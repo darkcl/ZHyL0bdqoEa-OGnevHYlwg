@@ -30,6 +30,8 @@
 		5CF0E043147B69E77976A2CCADFF18CA /* AFURLSessionManager.h in Headers */ = {isa = PBXBuildFile; fileRef = B49106E0CA60A4135E12310A3179FCAE /* AFURLSessionManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		620D1C1787D9BC05B0E96C1EA18ECBD3 /* Compatibility.h in Headers */ = {isa = PBXBuildFile; fileRef = 20637F49133E52F1B97661D0DFFE84E4 /* Compatibility.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		6CC4B79C1FEE1E7B3F2860ADA479D381 /* AFURLSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = AC2E687160276104D701CA28B5143DF4 /* AFURLSessionManager.m */; };
+		74302BE51C870A4E006F27FE /* AfterShipResponseSerializer.h in Headers */ = {isa = PBXBuildFile; fileRef = 74302BE31C870A4E006F27FE /* AfterShipResponseSerializer.h */; };
+		74302BE61C870A4E006F27FE /* AfterShipResponseSerializer.m in Sources */ = {isa = PBXBuildFile; fileRef = 74302BE41C870A4E006F27FE /* AfterShipResponseSerializer.m */; };
 		78449FCC01114171AA3CCB45C6666206 /* AFNetworkReachabilityManager.h in Headers */ = {isa = PBXBuildFile; fileRef = AB274EE7E873A0588EEF15B898E9663B /* AFNetworkReachabilityManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		79EF372D9D7679E5F4FF84C310DF4852 /* NSError+AfterShipKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DE850EB61B607C3824DE7A7686A2F16 /* NSError+AfterShipKit.m */; };
 		854BC4449D8CAD0F2799B021D1914C3B /* UIRefreshControl+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 611492C556F94DFAACF705B6B4A031E6 /* UIRefreshControl+AFNetworking.m */; };
@@ -166,6 +168,8 @@
 		69B2BE9815F95335F5F88176A4612E69 /* UIWebView+AFNetworking.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIWebView+AFNetworking.h"; path = "UIKit+AFNetworking/UIWebView+AFNetworking.h"; sourceTree = "<group>"; };
 		6BBAC333FAFEFD026BC4DE7F1E41717D /* UIRefreshControl+AFNetworking.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIRefreshControl+AFNetworking.h"; path = "UIKit+AFNetworking/UIRefreshControl+AFNetworking.h"; sourceTree = "<group>"; };
 		70840794C7CE650C43E508B4C950220D /* AFNetworkReachabilityManager.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = AFNetworkReachabilityManager.m; path = AFNetworking/AFNetworkReachabilityManager.m; sourceTree = "<group>"; };
+		74302BE31C870A4E006F27FE /* AfterShipResponseSerializer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AfterShipResponseSerializer.h; sourceTree = "<group>"; };
+		74302BE41C870A4E006F27FE /* AfterShipResponseSerializer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AfterShipResponseSerializer.m; sourceTree = "<group>"; };
 		78DD55E3FFE15061D098CFBB51F9A59D /* AfterShipKit-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "AfterShipKit-prefix.pch"; sourceTree = "<group>"; };
 		79D0C43F4E08962C6BF28B743F0D2C3E /* OHHTTPStubs+NSURLSessionConfiguration.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "OHHTTPStubs+NSURLSessionConfiguration.m"; path = "OHHTTPStubs/Sources/NSURLSession/OHHTTPStubs+NSURLSessionConfiguration.m"; sourceTree = "<group>"; };
 		7AA5CECE127E3D4AE2848F86D7130953 /* UIButton+AFNetworking.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIButton+AFNetworking.m"; path = "UIKit+AFNetworking/UIButton+AFNetworking.m"; sourceTree = "<group>"; };
@@ -373,6 +377,8 @@
 				86066F333D26B5934D3A5175099A6E75 /* AfterShipKit.m */,
 				1ECB6225B4AFD369AD27D082D5F35AA1 /* NSError+AfterShipKit.h */,
 				4DE850EB61B607C3824DE7A7686A2F16 /* NSError+AfterShipKit.m */,
+				74302BE31C870A4E006F27FE /* AfterShipResponseSerializer.h */,
+				74302BE41C870A4E006F27FE /* AfterShipResponseSerializer.m */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -599,6 +605,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				74302BE51C870A4E006F27FE /* AfterShipResponseSerializer.h in Headers */,
 				CC64A080F3C4B8B9475DBCCE197FB58C /* AfterShipKit.h in Headers */,
 				153918C37969E86579F8A76CD606B2FE /* NSError+AfterShipKit.h in Headers */,
 			);
@@ -798,6 +805,7 @@
 				9A620132013F1BAAD607CFAE8D511889 /* AfterShipKit-dummy.m in Sources */,
 				DEB5D3BBF15317DD5086A74B7B4D4CF3 /* AfterShipKit.m in Sources */,
 				79EF372D9D7679E5F4FF84C310DF4852 /* NSError+AfterShipKit.m in Sources */,
+				74302BE61C870A4E006F27FE /* AfterShipResponseSerializer.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
