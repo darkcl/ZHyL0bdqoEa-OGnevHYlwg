@@ -84,7 +84,6 @@
                                trackNumber:@"1234567893"
                                     fields:nil
                                    success:^(AfterShipTrackingInfo* trackingInfo) {
-                                       
                                        XCTAssertNotNil(trackingInfo);
                                        [expectation fulfill];
                                    }
@@ -178,5 +177,37 @@
     [OHHTTPStubs removeAllStubs];
 }
 
+- (void)testMappingObject{
+    XCTestExpectation *expectation = [self expectationWithDescription:@"Testing non json response"];
+    
+    [OHHTTPStubs stubRequestsPassingTest:^BOOL(NSURLRequest *request) {
+        return [request.URL.absoluteString isEqualToString:@"https://api.aftership.com/v4/trackings/stub/me"];
+    } withStubResponse:^OHHTTPStubsResponse*(NSURLRequest *request) {
+        NSString* fixture = [[NSBundle mainBundle] pathForResource:@"tracksample" ofType:@"json"];
+        return [OHHTTPStubsResponse responseWithFileAtPath:fixture
+                                                statusCode:200 headers:@{@"Content-Type":@"application/json"}];
+    }];
+    
+    [testManager setAPIKey:@"a71a336b-aaff-43f9-b98d-e19aa83cd93b"];
+    
+    [testManager fetchTrackingInfoWithSlug:@"stub"
+                               trackNumber:@"me"
+                                    fields:nil
+                                   success:^(AfterShipTrackingInfo* trackingInfo) {
+                                       XCTAssertNotNil(trackingInfo);
+                                       [expectation fulfill];
+                                   }
+                                   failure:^(NSError *err) {
+                                       
+                                       XCTFail(@"Should not have response");
+                                       [expectation fulfill];
+                                   }];
+    [self waitForExpectationsWithTimeout:30.0
+                                 handler:^(NSError * _Nullable error) {
+                                     XCTAssertNil(error);
+                                 }];
+    
+    [OHHTTPStubs removeAllStubs];
+}
 
 @end

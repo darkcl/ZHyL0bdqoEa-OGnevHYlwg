@@ -8,7 +8,9 @@
 
 #import <Foundation/Foundation.h>
 
-@class AFHTTPSessionManager, AfterShipTrackingInfo;
+#import "AfterShipTrackingInfo.h"
+
+@class AFHTTPSessionManager;
 
 @interface AfterShipKit : NSObject{
     AFHTTPSessionManager *manager;

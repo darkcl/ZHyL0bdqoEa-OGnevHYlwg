@@ -20,6 +20,7 @@
 		6003F5B1195388D20070C39A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F58D195388D20070C39A /* Foundation.framework */; };
 		6003F5B2195388D20070C39A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F591195388D20070C39A /* UIKit.framework */; };
 		6003F5BA195388D20070C39A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6003F5B8195388D20070C39A /* InfoPlist.strings */; };
+		74302BF71C87483B006F27FE /* tracksample.json in Resources */ = {isa = PBXBuildFile; fileRef = 74302BF61C87483B006F27FE /* tracksample.json */; };
 		7B159F01223E4365C23BC97E /* libPods-AfterShipKit_Example.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9B03EA9D8068BF3675B83F25 /* libPods-AfterShipKit_Example.a */; };
 		873B8AEB1B1F5CCA007FD442 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 873B8AEA1B1F5CCA007FD442 /* Main.storyboard */; };
 		A1A5D827B85347C6F23FD20C /* libPods-AfterShipKit_Tests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E6CBC40CEA9079F70FEF8228 /* libPods-AfterShipKit_Tests.a */; };
@@ -58,6 +59,7 @@
 		6003F5B7195388D20070C39A /* Tests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Tests-Info.plist"; sourceTree = "<group>"; };
 		6003F5B9195388D20070C39A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		606FC2411953D9B200FFA9A0 /* Tests-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Tests-Prefix.pch"; sourceTree = "<group>"; };
+		74302BF61C87483B006F27FE /* tracksample.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = tracksample.json; sourceTree = "<group>"; };
 		7A8E78CADBD2D7FACF9F5B5C /* Pods-AfterShipKit_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AfterShipKit_Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AfterShipKit_Tests/Pods-AfterShipKit_Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		873B8AEA1B1F5CCA007FD442 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		9B03EA9D8068BF3675B83F25 /* libPods-AfterShipKit_Example.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-AfterShipKit_Example.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -168,6 +170,7 @@
 				6003F5B7195388D20070C39A /* Tests-Info.plist */,
 				6003F5B8195388D20070C39A /* InfoPlist.strings */,
 				606FC2411953D9B200FFA9A0 /* Tests-Prefix.pch */,
+				74302BF61C87483B006F27FE /* tracksample.json */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -278,6 +281,7 @@
 			files = (
 				873B8AEB1B1F5CCA007FD442 /* Main.storyboard in Resources */,
 				6003F5A9195388D20070C39A /* Images.xcassets in Resources */,
+				74302BF71C87483B006F27FE /* tracksample.json in Resources */,
 				6003F598195388D20070C39A /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
