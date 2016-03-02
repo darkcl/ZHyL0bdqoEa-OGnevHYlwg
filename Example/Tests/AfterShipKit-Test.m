@@ -10,7 +10,7 @@
 #import <AfterShipKit/AfterShipKit.h>
 
 @interface AfterShipKit_Test : XCTestCase{
-    
+    AfterShipKit *testManager;
 }
 
 @end
@@ -20,16 +20,18 @@
 - (void)setUp {
     [super setUp];
     // Put setup code here. This method is called before the invocation of each test method in the class.
+    testManager = [[AfterShipKit alloc] init];
 }
 
 - (void)tearDown {
     // Put teardown code here. This method is called after the invocation of each test method in the class.
     [super tearDown];
+    testManager = nil;
 }
 
 - (void)testEmptyAPIKey {
     XCTestExpectation *expectation = [self expectationWithDescription:@"Testing Empty API Key"];
-    AfterShipKit *testManager = [[AfterShipKit alloc] init];
+    
     [testManager fetchTrackingInfoWithSlug:@""
                                trackNumber:@""
                                    success:^(NSDictionary *dict) {
@@ -49,7 +51,7 @@
 
 - (void)testEmptyParameters {
     XCTestExpectation *expectation = [self expectationWithDescription:@"Testing Empty Parameter"];
-    AfterShipKit *testManager = [[AfterShipKit alloc] init];
+    
     [testManager setAPIKey:@"a71a336b-aaff-43f9-b98d-e19aa83cd93b"];
     
     [testManager fetchTrackingInfoWithSlug:@""
@@ -71,7 +73,7 @@
 
 - (void)testFulfillAll {
     XCTestExpectation *expectation = [self expectationWithDescription:@"Testing Fulfill all parameter"];
-    AfterShipKit *testManager = [[AfterShipKit alloc] init];
+    
     [testManager setAPIKey:@"a71a336b-aaff-43f9-b98d-e19aa83cd93b"];
     
     [testManager fetchTrackingInfoWithSlug:@"dhl"
@@ -82,6 +84,27 @@
                                    }
                                    failure:^(NSError *err) {
                                        XCTFail(@"%@", err);
+                                       [expectation fulfill];
+                                   }];
+    [self waitForExpectationsWithTimeout:30.0
+                                 handler:^(NSError * _Nullable error) {
+                                     XCTAssertNil(error);
+                                 }];
+}
+
+- (void)testWrongTrackingNumber {
+    XCTestExpectation *expectation = [self expectationWithDescription:@"Testing Fulfill all parameter"];
+    
+    [testManager setAPIKey:@"a71a336b-aaff-43f9-b98d-e19aa83cd93b"];
+    
+    [testManager fetchTrackingInfoWithSlug:@"dhl"
+                               trackNumber:@"12345678931234"
+                                   success:^(NSDictionary *dict) {
+                                       XCTFail(@"Should not have response");
+                                       [expectation fulfill];
+                                   }
+                                   failure:^(NSError *err) {
+                                       XCTAssertNotNil(err);
                                        [expectation fulfill];
                                    }];
     [self waitForExpectationsWithTimeout:30.0
