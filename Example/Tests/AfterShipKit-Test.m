@@ -231,7 +231,7 @@
 }
 
 - (void)testMappingObject{
-    XCTestExpectation *expectation = [self expectationWithDescription:@"Testing non json response"];
+    XCTestExpectation *expectation = [self expectationWithDescription:@"Testing mapping json response"];
     
     [OHHTTPStubs stubRequestsPassingTest:^BOOL(NSURLRequest *request) {
         return [request.URL.absoluteString isEqualToString:@"https://api.aftership.com/v4/trackings/stub/me"];
