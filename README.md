@@ -1,10 +1,6 @@
 # AfterShipKit
 
-[![CI Status](http://img.shields.io/travis/Yeung Yiu Hung/AfterShipKit.svg?style=flat)](https://travis-ci.org/Yeung Yiu Hung/AfterShipKit)
-[![Version](https://img.shields.io/cocoapods/v/AfterShipKit.svg?style=flat)](http://cocoapods.org/pods/AfterShipKit)
-[![License](https://img.shields.io/cocoapods/l/AfterShipKit.svg?style=flat)](http://cocoapods.org/pods/AfterShipKit)
-[![Platform](https://img.shields.io/cocoapods/p/AfterShipKit.svg?style=flat)](http://cocoapods.org/pods/AfterShipKit)
-
+[![CI Status](https://travis-ci.org/darkcl/ZHyL0bdqoEa-OGnevHYlwg.svg?branch=master)](https://travis-ci.org/Yeung Yiu Hung/AfterShipKit)
 ## Usage
 
 To run the example project, clone the repo, and run `pod install` from the Example directory first.
