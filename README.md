@@ -1,6 +1,7 @@
 # AfterShipKit
 
-[![CI Status](https://travis-ci.org/darkcl/ZHyL0bdqoEa-OGnevHYlwg.svg?branch=master)](https://travis-ci.org/Yeung Yiu Hung/AfterShipKit)
+[![Build Status](https://travis-ci.org/darkcl/ZHyL0bdqoEa-OGnevHYlwg.svg?branch=master)](https://travis-ci.org/darkcl/ZHyL0bdqoEa-OGnevHYlwg)
+
 ## Usage
 
 To run the example project, clone the repo, and run `pod install` from the Example directory first.
