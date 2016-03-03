@@ -30,6 +30,8 @@ Then use it!
                                     }];
 ```
 
+For more information, view [Documentation](http://darkcl.github.io/ZHyL0bdqoEa-OGnevHYlwg/)
+
 ## Requirements
 XCode 7.0+
 
