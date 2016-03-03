@@ -19,12 +19,21 @@
 
 + (AfterShipKit *)sharedInstance;
 
-- (void)setAPIKey:(NSString *)key;
++ (void)setAPIKey:(NSString *)key;
 
-- (void)fetchTrackingInfoWithSlug:(NSString *)slug
++ (void)fetchTrackingInfoWithSlug:(NSString *)slug
                       trackNumber:(NSString *)trackNumber
                            fields:(NSArray<NSString *> *)fields
                           success:(void (^)(AfterShipTrackingInfo* trackingInfo))successBlock
                           failure:(void (^)(NSError* err))errorBlock;
+
++ (void)createTrackingWithTrackingInfo:(AfterShipTrackingInfo *)trackingInfo
+                               success:(void (^)(AfterShipTrackingInfo* trackingInfo))successBlock
+                               failure:(void (^)(NSError* err))errorBlock;
+
++ (void)deleteTrackingWithTrackingNumber:(NSString *)trackingNumber
+                                 andSlug:(NSString *)slug
+                                 success:(void (^)(void))successBlock
+                                 failure:(void (^)(NSError* err))errorBlock;
 
 @end

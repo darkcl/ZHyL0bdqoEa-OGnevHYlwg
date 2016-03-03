@@ -16,6 +16,7 @@
 @property (nonatomic, strong) NSDate *createDate;
 @property (nonatomic, strong) NSDate *updateDate;
 
+@property (nonatomic, strong) NSString *trackingNumber;
 @property (nonatomic, strong) NSString *trackingAccountNumber;
 @property (nonatomic, strong) NSString *trackingPostalCode;
 @property (nonatomic, strong) NSDate *trackingShipDate;
@@ -47,5 +48,10 @@
 @property (nonatomic, strong) NSString *title;
 @property (nonatomic, strong) NSNumber *trackedCount;
 @property (nonatomic, strong) NSArray<AfterShipCheckpointInfo *> *checkpoints;
+
+- (id)init NS_UNAVAILABLE;
+- (id)initWithTrackingNumber:(NSString * _Nonnull)trackingNum;
+
+- (NSDictionary *)dictionaryRepresentation;
 
 @end

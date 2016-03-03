@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		0EEE50341C8686E600F24832 /* AfterShipKit-Test.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EEE50331C8686E600F24832 /* AfterShipKit-Test.m */; };
+		0EEE50421C88200F00F24832 /* tracking_post_sample.json in Resources */ = {isa = PBXBuildFile; fileRef = 0EEE50411C88200F00F24832 /* tracking_post_sample.json */; };
 		6003F58E195388D20070C39A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F58D195388D20070C39A /* Foundation.framework */; };
 		6003F590195388D20070C39A /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F58F195388D20070C39A /* CoreGraphics.framework */; };
 		6003F592195388D20070C39A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F591195388D20070C39A /* UIKit.framework */; };
@@ -38,6 +39,7 @@
 
 /* Begin PBXFileReference section */
 		0EEE50331C8686E600F24832 /* AfterShipKit-Test.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "AfterShipKit-Test.m"; sourceTree = "<group>"; };
+		0EEE50411C88200F00F24832 /* tracking_post_sample.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = tracking_post_sample.json; sourceTree = "<group>"; };
 		1FE023CD896C27FD46692832 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
 		22F5A19BF6E652C957BC96D2 /* AfterShipKit.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = AfterShipKit.podspec; path = ../AfterShipKit.podspec; sourceTree = "<group>"; };
 		29FC67B391517560B70EE7CE /* Pods-AfterShipKit_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AfterShipKit_Example.release.xcconfig"; path = "Pods/Target Support Files/Pods-AfterShipKit_Example/Pods-AfterShipKit_Example.release.xcconfig"; sourceTree = "<group>"; };
@@ -171,6 +173,7 @@
 				6003F5B8195388D20070C39A /* InfoPlist.strings */,
 				606FC2411953D9B200FFA9A0 /* Tests-Prefix.pch */,
 				74302BF61C87483B006F27FE /* tracksample.json */,
+				0EEE50411C88200F00F24832 /* tracking_post_sample.json */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -281,6 +284,7 @@
 			files = (
 				873B8AEB1B1F5CCA007FD442 /* Main.storyboard in Resources */,
 				6003F5A9195388D20070C39A /* Images.xcassets in Resources */,
+				0EEE50421C88200F00F24832 /* tracking_post_sample.json in Resources */,
 				74302BF71C87483B006F27FE /* tracksample.json in Resources */,
 				6003F598195388D20070C39A /* InfoPlist.strings in Resources */,
 			);

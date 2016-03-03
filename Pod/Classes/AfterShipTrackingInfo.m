@@ -31,6 +31,13 @@
     return self;
 }
 
+- (id)initWithTrackingNumber:(NSString *)trackingNum{
+    if (self = [super init]) {
+        _trackingNumber = trackingNum;
+    }
+    return self;
+}
+
 - (NSDictionary *)mapping{
     return @{@"created_at": KZCall(dateFromResponse:, createDate),
              @"updated_at": KZCall(dateFromResponse:, updateDate),
@@ -95,6 +102,42 @@
     }
     
     return anArray;
+}
+
+- (NSString *)stringFromShipingDate:(NSDate *)date{
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    [formatter setDateFormat:@"yyyyMMdd"];
+    return [formatter stringFromDate:date];
+}
+
+- (NSString *)stringFromDate:(NSDate *)date{
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    [formatter setDateFormat:@"yyyy-MM-dd'T'HH:mm:ssZ"];
+    return [formatter stringFromDate:date];
+}
+
+- (NSDictionary *)dictionaryRepresentation{
+    NSMutableDictionary *representation = [[NSMutableDictionary alloc] init];
+    [self dictionarySetValue:_slug forKey:@"slug" toDictionary:representation];
+    [self dictionarySetValue:_trackingNumber forKey:@"tracking_number" toDictionary:representation];
+    
+    [self dictionarySetValue:_trackingPostalCode forKey:@"tracking_postal_code" toDictionary:representation];
+    [self dictionarySetValue:[self stringFromShipingDate:_trackingShipDate] forKey:@"tracking_ship_date" toDictionary:representation];
+    [self dictionarySetValue:_trackingAccountNumber forKey:@"tracking_account_number" toDictionary:representation];
+    [self dictionarySetValue:_trackingKey forKey:@"tracking_key" toDictionary:representation];
+    [self dictionarySetValue:_trackingDestinationCountry forKey:@"tracking_destination_country" toDictionary:representation];
+    [self dictionarySetValue:[_androidDeviceToken componentsJoinedByString:@","] forKey:@"android" toDictionary:representation];
+    [self dictionarySetValue:[_iosDeviceIds componentsJoinedByString:@","] forKey:@"ios" toDictionary:representation];
+    [self dictionarySetValue:[_emails componentsJoinedByString:@","] forKey:@"emails" toDictionary:representation];
+    [self dictionarySetValue:[_smses componentsJoinedByString:@","] forKey:@"smses" toDictionary:representation];
+    [self dictionarySetValue:_title forKey:@"title" toDictionary:representation];
+    [self dictionarySetValue:_customerName forKey:@"customer_name" toDictionary:representation];
+    [self dictionarySetValue:_destinationCountryIso3 forKey:@"destination_country_iso3" toDictionary:representation];
+    [self dictionarySetValue:_orderId forKey:@"order_id" toDictionary:representation];
+    [self dictionarySetValue:_orderIdPath forKey:@"order_id_path" toDictionary:representation];
+    [self dictionarySetValue:_customFields forKey:@"custom_fields" toDictionary:representation];
+    
+    return @{@"tracking":representation};
 }
 
 @end

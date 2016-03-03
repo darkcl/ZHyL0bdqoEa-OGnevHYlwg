@@ -11,5 +11,6 @@
 @interface AfterShipBaseObject : NSObject
 
 - (id)initWithInfo:(NSDictionary *)dict;
+- (void)dictionarySetValue:(id)value forKey:(NSString *)key toDictionary:(NSMutableDictionary *)dict;
 
 @end

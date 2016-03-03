@@ -15,4 +15,10 @@
     return nil;
 }
 
+- (void)dictionarySetValue:(id)value forKey:(NSString *)key toDictionary:(NSMutableDictionary *)dict{
+    if (value != nil) {
+        [dict setValue:value forKey:key];
+    }
+}
+
 @end

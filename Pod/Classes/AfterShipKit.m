@@ -32,6 +32,30 @@
     return self;
 }
 
++ (void)setAPIKey:(NSString *)key{
+    [[self sharedInstance] setAPIKey:key];
+}
+
++ (void)fetchTrackingInfoWithSlug:(NSString *)slug
+                      trackNumber:(NSString *)trackNumber
+                           fields:(NSArray<NSString *> *)fields
+                          success:(void (^)(AfterShipTrackingInfo* trackingInfo))successBlock
+                          failure:(void (^)(NSError* err))errorBlock{
+    [[self sharedInstance] fetchTrackingInfoWithSlug:slug
+                                         trackNumber:trackNumber
+                                              fields:fields
+                                             success:successBlock
+                                             failure:errorBlock];
+}
+
++ (void)createTrackingWithTrackingInfo:(AfterShipTrackingInfo *)trackingInfo
+                               success:(void (^)(AfterShipTrackingInfo* trackingInfo))successBlock
+                               failure:(void (^)(NSError* err))errorBlock{
+    [[self sharedInstance] createTrackingWithTrackingInfo:trackingInfo
+                                                  success:successBlock
+                                                  failure:errorBlock];
+}
+
 - (void)setAPIKey:(NSString *)key{
     apiKey = key;
     
@@ -40,6 +64,49 @@
     [requestSerializer setValue:@"1.0.0" forHTTPHeaderField:@"aftership-ios-sdk"];
     requestSerializer.HTTPShouldHandleCookies = NO;
     manager.requestSerializer = requestSerializer;
+}
+
++ (void)deleteTrackingWithTrackingNumber:(NSString *)trackingNumber
+                                 andSlug:(NSString *)slug
+                                 success:(void (^)(void))successBlock
+                                 failure:(void (^)(NSError* err))errorBlock{
+    [[self sharedInstance] deleteTrackingWithTrackingNumber:trackingNumber
+                                                    andSlug:slug
+                                                    success:successBlock
+                                                    failure:errorBlock];
+}
+
+#pragma mark - Private Functions
+
+- (void)deleteTrackingWithTrackingNumber:(NSString *)trackingNumber
+                                 andSlug:(NSString *)slug
+                                 success:(void (^)(void))successBlock
+                                 failure:(void (^)(NSError* err))errorBlock{
+    [manager DELETE:[NSString stringWithFormat:@"/v4/trackings/%@/%@", slug, trackingNumber]
+         parameters:nil
+            success:^(NSURLSessionDataTask * _Nonnull task, id  _Nonnull responseObject) {
+                successBlock();
+            }
+            failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+                errorBlock(error);
+            }];
+}
+
+- (void)createTrackingWithTrackingInfo:(AfterShipTrackingInfo *)trackingInfo
+                               success:(void (^)(AfterShipTrackingInfo* trackingInfo))successBlock
+                               failure:(void (^)(NSError* err))errorBlock{
+    AfterShipResponseSerializer *serializer = [AfterShipResponseSerializer serializer];
+    [serializer setExpectedResponseClass:[AfterShipTrackingInfo class]
+                                 isArray:NO];
+    manager.responseSerializer = serializer;
+    [manager POST:@"/v4/trackings"
+       parameters:trackingInfo.dictionaryRepresentation
+          success:^(NSURLSessionDataTask * _Nonnull task, id  _Nonnull responseObject) {
+              successBlock(responseObject);
+          }
+          failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+              errorBlock(error);
+          }];
 }
 
 - (void)fetchTrackingInfoWithSlug:(NSString *)slug
