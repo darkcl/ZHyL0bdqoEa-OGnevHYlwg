@@ -128,19 +128,15 @@
     [serializer setExpectedResponseClass:[AfterShipTrackingInfo class]
                                  isArray:NO];
     manager.responseSerializer = serializer;
-    NSMutableDictionary *param;
-    if (fields.count > 0) {
-        param = [[NSMutableDictionary alloc] init];
-        [param setObject:fields forKey:@"fields"];
-    }
+    NSString *fieldsString = [fields componentsJoinedByString:@","];
     
     if (apiKey == nil) {
         errorBlock([NSError missingApiKey]);
     }else if (slug.length == 0 || trackNumber.length == 0) {
         errorBlock([NSError missingParameters]);
     }else{
-        [manager GET:[NSString stringWithFormat:@"/v4/trackings/%@/%@", slug, trackNumber]
-          parameters:param
+        [manager GET:[NSString stringWithFormat:@"/v4/trackings/%@/%@%@", slug, trackNumber, (fieldsString.length > 0) ? [NSString stringWithFormat:@"?fields=%@",fieldsString] : @""]
+          parameters:nil
              success:^(NSURLSessionDataTask * _Nonnull task, id  _Nonnull responseObject) {
                  [self updateRateLimitFromRepsonse:(NSHTTPURLResponse*)task.response];
                  successBlock(responseObject);

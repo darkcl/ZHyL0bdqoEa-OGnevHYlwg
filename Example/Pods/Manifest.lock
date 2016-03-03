@@ -20,7 +20,7 @@ PODS:
   - AFNetworking/UIKit (2.6.3):
     - AFNetworking/NSURLConnection
     - AFNetworking/NSURLSession
-  - AfterShipKit (0.1.0):
+  - AfterShipKit (0.1.1):
     - AFNetworking (~> 2.3)
     - KZPropertyMapper
   - KZPropertyMapper (2.6)
@@ -48,7 +48,7 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   AFNetworking: cb8d14a848e831097108418f5d49217339d4eb60
-  AfterShipKit: 6eed04b6d2554e700f752a297da8d486a02d043a
+  AfterShipKit: 9bb8491e4aaaa99d1efee1bc2039c5d3bc61e4f9
   KZPropertyMapper: bcaabe1ec5b4368acb8092faf40666096ba9bb23
   OHHTTPStubs: f7d1604d04d37d055460c0ef9af01bb249ded0fa
 

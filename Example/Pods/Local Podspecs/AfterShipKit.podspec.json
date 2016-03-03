@@ -1,6 +1,6 @@
 {
   "name": "AfterShipKit",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "summary": "AfterShip api wrapper.",
   "description": "An AfterShip api wrapper using AFNetworking",
   "homepage": "https://github.com/darkcl/ZHyL0bdqoEa-OGnevHYlwg",
@@ -10,7 +10,7 @@
   },
   "source": {
     "git": "https://github.com/darkcl/ZHyL0bdqoEa-OGnevHYlwg.git",
-    "tag": "0.1.0"
+    "tag": "0.1.1"
   },
   "platforms": {
     "ios": "7.1"

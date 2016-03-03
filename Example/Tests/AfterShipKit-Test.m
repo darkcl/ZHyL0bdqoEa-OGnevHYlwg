@@ -95,6 +95,61 @@
                                  }];
 }
 
+- (void)testFields {
+    XCTestExpectation *expectation = [self expectationWithDescription:@"Testing Fulfill all parameter"];
+    
+    [AfterShipKit setAPIKey:@"a71a336b-aaff-43f9-b98d-e19aa83cd93b"];
+    
+    [AfterShipKit fetchTrackingInfoWithSlug:@"dhl"
+                                trackNumber:@"1234567883"
+                                     fields:@[@"title"]
+                                    success:^(AfterShipTrackingInfo* trackingInfo) {
+                                        XCTAssertNotNil(trackingInfo);
+                                        XCTAssertEqualObjects(trackingInfo.title, @"Title Name");
+                                        XCTAssertNil(trackingInfo.trackingId);
+                                        XCTAssertNil(trackingInfo.createDate);
+                                        XCTAssertNil(trackingInfo.updateDate);
+                                        XCTAssertNil(trackingInfo.trackingNumber);
+                                        XCTAssertNil(trackingInfo.trackingAccountNumber);
+                                        XCTAssertNil(trackingInfo.trackingPostalCode);
+                                        XCTAssertNil(trackingInfo.trackingShipDate);
+                                        XCTAssertNil(trackingInfo.trackingKey);
+                                        XCTAssertNil(trackingInfo.trackingDestinationCountry);
+                                        XCTAssertNil(trackingInfo.slug);
+                                        XCTAssertNil(trackingInfo.androidDeviceToken);
+                                        XCTAssertNil(trackingInfo.customFields);
+                                        XCTAssertNil(trackingInfo.customerName);
+                                        XCTAssertNil(trackingInfo.deliveryTime);
+                                        XCTAssertNil(trackingInfo.destinationCountryIso3);
+                                        XCTAssertNil(trackingInfo.emails);
+                                        XCTAssertNil(trackingInfo.expectedDelivery);
+                                        XCTAssertNil(trackingInfo.iosDeviceIds);
+                                        XCTAssertNil(trackingInfo.orderId);
+                                        XCTAssertNil(trackingInfo.orderIdPath);
+                                        XCTAssertNil(trackingInfo.originCountryIso3);
+                                        XCTAssertNil(trackingInfo.uniqueToken);
+                                        XCTAssertNil(trackingInfo.shipmentPackageCount);
+                                        XCTAssertNil(trackingInfo.shipmentType);
+                                        XCTAssertNil(trackingInfo.shipmentWeightUnit);
+                                        XCTAssertNil(trackingInfo.signedBy);
+                                        XCTAssertNil(trackingInfo.smses);
+                                        XCTAssertNil(trackingInfo.source);
+                                        XCTAssertNil(trackingInfo.tag);
+                                        XCTAssertNil(trackingInfo.trackedCount);
+                                        XCTAssertNil(trackingInfo.checkpoints);
+                                        
+                                        [expectation fulfill];
+                                    }
+                                    failure:^(NSError *err) {
+                                        XCTFail(@"Should not failed, %@", err);
+                                        [expectation fulfill];
+                                    }];
+    [self waitForExpectationsWithTimeout:30.0
+                                 handler:^(NSError * _Nullable error) {
+                                     XCTAssertNil(error);
+                                 }];
+}
+
 - (void)testWrongTrackingNumber {
     XCTestExpectation *expectation = [self expectationWithDescription:@"Testing wrong track number"];
     
