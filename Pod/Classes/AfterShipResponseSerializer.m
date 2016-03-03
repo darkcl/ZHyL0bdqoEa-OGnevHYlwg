@@ -47,7 +47,7 @@
     if (*error) {
         return responseObject;
     }else{
-        if ([responseClass instancesRespondToSelector:@selector(initWithInfo:)]) {
+        if ([responseClass instancesRespondToSelector:@selector(initWithInfo:)] && [responseObject objectForKey:@"data"] != nil) {
             id obj = [[responseClass alloc] initWithInfo:responseObject[@"data"]];
             return obj;
         }else{
