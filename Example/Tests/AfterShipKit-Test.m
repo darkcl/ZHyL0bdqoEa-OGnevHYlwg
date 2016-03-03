@@ -42,7 +42,7 @@
                                        [expectation fulfill];
                                    }
                                    failure:^(NSError *err) {
-                                       XCTAssertEqual(err.domain, @"com.aftership.error");
+                                       XCTAssertEqualObjects(err.domain, @"com.aftership.error");
                                        XCTAssertEqual(err.code, 0);
                                        [expectation fulfill];
                                    }];
@@ -65,7 +65,7 @@
                                        [expectation fulfill];
                                    }
                                    failure:^(NSError *err) {
-                                       XCTAssertEqual(err.domain, @"com.aftership.error");
+                                       XCTAssertEqualObjects(err.domain, @"com.aftership.error");
                                        XCTAssertEqual(err.code, 1);
                                        [expectation fulfill];
                                    }];
@@ -110,7 +110,7 @@
                                        [expectation fulfill];
                                    }
                                    failure:^(NSError *err) {
-                                       XCTAssertEqual(err.domain, @"com.aftership.error");
+                                       XCTAssertEqualObjects(err.domain, @"com.aftership.error");
                                        XCTAssertEqual(err.code, 4004);
                                        [expectation fulfill];
                                    }];
@@ -133,7 +133,7 @@
                                        [expectation fulfill];
                                    }
                                    failure:^(NSError *err) {
-                                       XCTAssertEqual(err.domain, @"com.aftership.error");
+                                       XCTAssertEqualObjects(err.domain, @"com.aftership.error");
                                        XCTAssertEqual(err.code, 4010);
                                        [expectation fulfill];
                                    }];
@@ -190,16 +190,59 @@
     
     [testManager setAPIKey:@"a71a336b-aaff-43f9-b98d-e19aa83cd93b"];
     
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    [formatter setDateFormat:@"yyyy-MM-dd'T'HH:mm:ssZ"];
+    
+    NSDateFormatter *shipDateformatter = [[NSDateFormatter alloc] init];
+    [shipDateformatter setDateFormat:@"yyyyMMdd"];
+    
     [testManager fetchTrackingInfoWithSlug:@"stub"
                                trackNumber:@"me"
                                     fields:nil
                                    success:^(AfterShipTrackingInfo* trackingInfo) {
                                        XCTAssertNotNil(trackingInfo);
+                                       
+                                       XCTAssertEqualObjects(trackingInfo.trackingId, @"53c9f6fcc5cd69117f277276");
+                                       XCTAssertEqualObjects(trackingInfo.createDate, [formatter dateFromString:@"2014-07-19T04:41:32+00:00"]);
+                                       XCTAssertEqualObjects(trackingInfo.updateDate, [formatter dateFromString:@"2014-07-19T04:41:42+00:00"]);
+                                       XCTAssertEqual(trackingInfo.trackingPostalCode, nil);
+                                       XCTAssertEqual(trackingInfo.trackingShipDate, nil);
+                                       XCTAssertEqual(trackingInfo.trackingAccountNumber, nil);
+                                       XCTAssertEqual(trackingInfo.trackingKey, nil);
+                                       XCTAssertEqual(trackingInfo.trackingDestinationCountry, nil);
+                                       XCTAssertEqualObjects(trackingInfo.slug, @"ups");
+                                       XCTAssertEqual(trackingInfo.isActive, NO);
+                                       XCTAssertEqual(trackingInfo.androidDeviceToken, nil);
+                                       XCTAssertEqualObjects(trackingInfo.customFields, @{});
+                                       XCTAssertEqual(trackingInfo.customerName, nil);
+                                       XCTAssertEqualObjects(trackingInfo.deliveryTime, @7);
+                                       XCTAssertEqualObjects(trackingInfo.destinationCountryIso3, @"USA");
+                                       XCTAssertEqualObjects(trackingInfo.emails, @[]);
+                                       XCTAssertEqual(trackingInfo.expectedDelivery, nil);
+                                       XCTAssertEqual(trackingInfo.iosDeviceIds, nil);
+                                       XCTAssertEqual(trackingInfo.orderId, nil);
+                                       XCTAssertEqual(trackingInfo.orderIdPath, nil);
+                                       XCTAssertEqualObjects(trackingInfo.originCountryIso3, @"USA");
+                                       XCTAssertEqualObjects(trackingInfo.uniqueToken, @"WJ9PLQt8e");
+                                       XCTAssertEqualObjects(trackingInfo.shipmentType, @"GROUND");
+                                       XCTAssertEqual(trackingInfo.shipmentWeight, @3.00);
+                                       XCTAssertEqualObjects(trackingInfo.shipmentWeightUnit, @"LBS");
+                                       XCTAssertEqualObjects(trackingInfo.signedBy, @"FRONT DOOR");
+                                       XCTAssertEqualObjects(trackingInfo.smses, @[]);
+                                       XCTAssertEqualObjects(trackingInfo.source, @"api");
+                                       XCTAssertEqualObjects(trackingInfo.tag, @"Delivered");
+                                       XCTAssertEqualObjects(trackingInfo.title, @"1Z45783E0398560742");
+                                       XCTAssertEqualObjects(trackingInfo.trackedCount, @1);
+                                       XCTAssertEqual(trackingInfo.checkpoints.count, 8);
+                                       
+                                       for (AfterShipCheckpointInfo *anInfo in trackingInfo.checkpoints) {
+                                           XCTAssertTrue([anInfo isKindOfClass:[AfterShipCheckpointInfo class]]);
+                                       }
                                        [expectation fulfill];
                                    }
                                    failure:^(NSError *err) {
                                        
-                                       XCTFail(@"Should not have response");
+                                       XCTFail(@"Should not have error");
                                        [expectation fulfill];
                                    }];
     [self waitForExpectationsWithTimeout:30.0

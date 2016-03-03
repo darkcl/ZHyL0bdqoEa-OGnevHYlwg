@@ -7,9 +7,10 @@
 //
 
 #import "AfterShipTrackingInfo.h"
-#import "AfterShipCheckpointInfo.h"
 
 #import <KZPropertyMapper/KZPropertyMapper.h>
+
+#import "AfterShipBaseObject.h"
 
 @implementation AfterShipTrackingInfo
 
@@ -41,14 +42,14 @@
              @"tracking_destination_country": KZProperty(trackingDestinationCountry),
              @"slug": KZProperty(slug),
              @"active": KZProperty(isActive),
-             @"android": KZProperty(androidDeviceToken),
+             @"android": KZCall(stringOrArrayToArray:, androidDeviceToken),
              @"custom_fields": KZProperty(customFields),
              @"customer_name": KZProperty(customerName),
              @"delivery_time": KZProperty(deliveryTime),
              @"destination_country_iso3": KZProperty(destinationCountryIso3),
-             @"emails": KZProperty(emails),
+             @"emails": KZCall(stringOrArrayToArray:, emails),
              @"expected_delivery":KZProperty(expectedDelivery),
-             @"ios": KZProperty(iosDeviceIds),
+             @"ios": KZCall(stringOrArrayToArray:, iosDeviceIds),
              @"order_id": KZProperty(orderId),
              @"order_id_path": KZProperty(orderIdPath),
              @"origin_country_iso3": KZProperty(originCountryIso3),
@@ -58,12 +59,20 @@
              @"shipment_weight": KZProperty(shipmentWeight),
              @"shipment_weight_unit":KZProperty(shipmentWeightUnit),
              @"signed_by": KZProperty(signedBy),
-             @"smses":KZProperty(smses),
+             @"smses":KZCall(stringOrArrayToArray:, smses),
              @"source": KZProperty(source),
              @"tag": KZProperty(tag),
              @"title": KZProperty(title),
              @"tracked_count": KZProperty(trackedCount),
              @"checkpoints": KZCall(mapCheckPointInfoWithArray:, checkpoints)};
+}
+
+- (NSArray *)stringOrArrayToArray:(id)value{
+    if ([value isKindOfClass:[NSArray class]]) {
+        return value;
+    }else{
+        return @[value];
+    }
 }
 
 - (NSDate *)shippingDateFromResponse:(NSString *)string{
@@ -79,8 +88,13 @@
 }
 
 - (NSArray<AfterShipCheckpointInfo *> *)mapCheckPointInfoWithArray:(NSArray<NSDictionary *> *)dictArray{
+    NSMutableArray *anArray = [[NSMutableArray alloc] init];
     
-    return nil;
+    for (NSDictionary *infoDict in dictArray) {
+        [anArray addObject:[[AfterShipCheckpointInfo alloc] initWithInfo:infoDict]];
+    }
+    
+    return anArray;
 }
 
 @end

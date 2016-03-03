@@ -7,10 +7,10 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "AfterShipBaseObject.h"
+#import "AfterShipCheckpointInfo.h"
 
-@class AfterShipCheckpointInfo;
-
-@interface AfterShipTrackingInfo : NSObject
+@interface AfterShipTrackingInfo : AfterShipBaseObject
 
 @property (nonatomic, strong) NSString *trackingId;
 @property (nonatomic, strong) NSDate *createDate;
@@ -47,11 +47,5 @@
 @property (nonatomic, strong) NSString *title;
 @property (nonatomic, strong) NSNumber *trackedCount;
 @property (nonatomic, strong) NSArray<AfterShipCheckpointInfo *> *checkpoints;
-
-+ (NSDictionary *)objectMapping;
-+ (id)modelWithInfo:(NSDictionary *)dict;
-
-- (id)initWithInfo:(NSDictionary *)dict;
-- (NSDictionary *)mapping;
 
 @end
