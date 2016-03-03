@@ -13,6 +13,12 @@
     BOOL isNextResponseArray;
 }
 
+/**
+ *  Set next expected class to map with
+ *
+ *  @param aClass  Class to map json result to model, must be AfterShipBaseObject subclass
+ *  @param isArray Is Response an array
+ */
 - (void)setExpectedResponseClass:(Class)aClass
                          isArray:(BOOL)isArray;
 
