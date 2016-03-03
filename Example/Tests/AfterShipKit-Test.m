@@ -274,6 +274,29 @@
     XCTAssertEqualObjects(jsonDict, anInfo.dictionaryRepresentation);
 }
 
+- (void)testEmptyTrackNumber{
+    XCTestExpectation *expectation = [self expectationWithDescription:@"Testing Empty Track Number"];
+    
+    [AfterShipKit setAPIKey:@"a71a336b-aaff-43f9-b98d-e19aa83cd93b"];
+    
+    AfterShipTrackingInfo *anInfo = [[AfterShipTrackingInfo alloc] initWithTrackingNumber:@""];
+    [AfterShipKit createTrackingWithTrackingInfo:anInfo
+                                         success:^(AfterShipTrackingInfo *trackingInfo) {
+                                             XCTFail(@"Should not have response");
+                                             [expectation fulfill];
+                                         }
+                                         failure:^(NSError *err) {
+                                             XCTAssertNotNil(err);
+                                             XCTAssertEqualObjects(err.domain, @"com.aftership.error");
+                                             [expectation fulfill];
+                                         }];
+    
+    [self waitForExpectationsWithTimeout:30.0
+                                 handler:^(NSError * _Nullable error) {
+                                     XCTAssertNil(error);
+                                 }];
+}
+
 - (void)testCreateTrackingInfo{
     XCTestExpectation *expectation = [self expectationWithDescription:@"Testing Create Tracking Info"];
     
