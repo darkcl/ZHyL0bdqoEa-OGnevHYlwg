@@ -338,4 +338,45 @@
                                  }];
 }
 
+- (void)testRateLimit{
+    XCTestExpectation *expectation = [self expectationWithDescription:@"Testing Rate Limit"];
+    
+    [AfterShipKit setAPIKey:@"a71a336b-aaff-43f9-b98d-e19aa83cd93b"];
+    
+    [OHHTTPStubs stubRequestsPassingTest:^BOOL(NSURLRequest *request) {
+        return [request.URL.absoluteString isEqualToString:@"https://api.aftership.com/v4/trackings/stub/me"];
+    } withStubResponse:^OHHTTPStubsResponse*(NSURLRequest *request) {
+        NSString* fixture = [[NSBundle mainBundle] pathForResource:@"tracksample" ofType:@"json"];
+        NSDate *resetDate = [NSDate dateWithTimeIntervalSinceNow:5];
+        
+        return [OHHTTPStubsResponse responseWithFileAtPath:fixture
+                                                statusCode:200
+                                                   headers:@{@"Content-Type":@"application/json",
+                                                             @"x-ratelimit-limit": @"610",
+                                                             @"x-ratelimit-remaining": @"450",
+                                                             @"x-ratelimit-reset": [[NSNumber numberWithDouble:[resetDate timeIntervalSince1970]] stringValue]}];
+    }];
+    [AfterShipKit fetchTrackingInfoWithSlug:@"stub"
+                                trackNumber:@"me"
+                                     fields:nil
+                                    success:^(AfterShipTrackingInfo* trackingInfo) {
+                                        XCTAssertTrue([AfterShipKit rateLimitRemaining] == 450);
+                                    }
+                                    failure:^(NSError *err) {
+                                        XCTAssertTrue([AfterShipKit rateLimitRemaining] == 450);
+                                    }];
+    
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(10 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [expectation fulfill];
+    });
+    
+    [self waitForExpectationsWithTimeout:12.0
+                                 handler:^(NSError * _Nullable error) {
+                                     XCTAssertTrue([AfterShipKit rateLimitRemaining] == 610, @"Expected 610, Result : %i",(int)[AfterShipKit rateLimitRemaining]);
+                                     XCTAssertNil(error);
+                                 }];
+    
+    [OHHTTPStubs removeAllStubs];
+}
+
 @end

@@ -28,6 +28,8 @@
 - (id)init{
     if (self = [super init]) {
         manager = [[AFHTTPSessionManager alloc] initWithBaseURL:[NSURL URLWithString:@"https://api.aftership.com"]];
+        rateLimit = 600;
+        rateLimitRemaining = 600;
     }
     return self;
 }
@@ -76,6 +78,10 @@
                                                     failure:errorBlock];
 }
 
++ (NSInteger)rateLimitRemaining{
+    return [[self sharedInstance] rateLimitRemaining];
+}
+
 #pragma mark - Private Functions
 
 - (void)deleteTrackingWithTrackingNumber:(NSString *)trackingNumber
@@ -85,9 +91,11 @@
     [manager DELETE:[NSString stringWithFormat:@"/v4/trackings/%@/%@", slug, trackingNumber]
          parameters:nil
             success:^(NSURLSessionDataTask * _Nonnull task, id  _Nonnull responseObject) {
+                [self updateRateLimitFromRepsonse:(NSHTTPURLResponse*)task.response];
                 successBlock();
             }
             failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+                [self updateRateLimitFromRepsonse:(NSHTTPURLResponse*)task.response];
                 errorBlock(error);
             }];
 }
@@ -102,9 +110,11 @@
     [manager POST:@"/v4/trackings"
        parameters:trackingInfo.dictionaryRepresentation
           success:^(NSURLSessionDataTask * _Nonnull task, id  _Nonnull responseObject) {
+              [self updateRateLimitFromRepsonse:(NSHTTPURLResponse*)task.response];
               successBlock(responseObject);
           }
           failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+              [self updateRateLimitFromRepsonse:(NSHTTPURLResponse*)task.response];
               errorBlock(error);
           }];
 }
@@ -132,11 +142,49 @@
         [manager GET:[NSString stringWithFormat:@"/v4/trackings/%@/%@", slug, trackNumber]
           parameters:param
              success:^(NSURLSessionDataTask * _Nonnull task, id  _Nonnull responseObject) {
+                 [self updateRateLimitFromRepsonse:(NSHTTPURLResponse*)task.response];
                  successBlock(responseObject);
              }
              failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+                 [self updateRateLimitFromRepsonse:(NSHTTPURLResponse*)task.response];
                  errorBlock(error);
              }];
+    }
+}
+
+- (void)resetRateLimit{
+    rateLimitRemaining = rateLimit;
+}
+
+- (NSInteger)rateLimitRemaining{
+    return rateLimitRemaining;
+}
+
+- (void)updateRateLimitFromRepsonse:(NSHTTPURLResponse*)response{
+    if ([response respondsToSelector:@selector(allHeaderFields)]) {
+        NSDictionary *dictionary = [response allHeaderFields];
+        /*
+         x-ratelimit-limit
+         x-ratelimit-remaining
+         x-ratelimit-reset
+         */
+        rateLimitRemaining = [[dictionary objectForKey:@"x-ratelimit-remaining"] integerValue];
+        rateLimit = [[dictionary objectForKey:@"x-ratelimit-limit"] integerValue];
+        
+        NSDate *resetRateLimitTime = [NSDate dateWithTimeIntervalSince1970:[[dictionary objectForKey:@"x-ratelimit-reset"] doubleValue]];
+        
+        if (resetTimer) {
+            [resetTimer invalidate];
+            resetTimer = nil;
+        }
+        
+        NSTimeInterval secondsBetween = [resetRateLimitTime timeIntervalSinceDate:[NSDate date]];
+        
+        resetTimer = [NSTimer scheduledTimerWithTimeInterval:secondsBetween
+                                                      target:self
+                                                    selector:@selector(resetRateLimit)
+                                                    userInfo:nil
+                                                     repeats:NO];
     }
 }
 

@@ -15,6 +15,10 @@
 @interface AfterShipKit : NSObject{
     AFHTTPSessionManager *manager;
     NSString *apiKey;
+    
+    NSInteger rateLimit;
+    NSTimer *resetTimer;
+    NSInteger rateLimitRemaining;
 }
 
 + (AfterShipKit *)sharedInstance;
@@ -35,5 +39,7 @@
                                  andSlug:(NSString *)slug
                                  success:(void (^)(void))successBlock
                                  failure:(void (^)(NSError* err))errorBlock;
+
++ (NSInteger)rateLimitRemaining;
 
 @end
