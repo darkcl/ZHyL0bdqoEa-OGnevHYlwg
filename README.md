@@ -13,7 +13,7 @@ Before you started with using our AfterShipKit, you will need to obtain your API
 Setting up AfterShipKit with your api key:
 
 ```objc
-[AfterShipKit setAPIKey:@"a71a336b-aaff-43f9-b98d-e19aa83cd93b"];
+[AfterShipKit setAPIKey:@"YOUR_API_KEY"];
 ```
 
 Then use it!
