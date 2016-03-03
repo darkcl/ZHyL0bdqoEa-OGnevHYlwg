@@ -75,7 +75,7 @@
 /**
  *  Create a tracking.
  *
- *  @param trackingInfo AfterShipTrackingInfo object for create tracking ingo
+ *  @param trackingInfo AfterShipTrackingInfo object for create tracking info
  *  @param successBlock Passing result of AfterShipTrackingInfo
  *  @param errorBlock   Passing error for failure
  */
