@@ -12,12 +12,34 @@
 
 @class AFHTTPSessionManager;
 
+/**
+ *  AfterShipKit is a collection of requests to consume Aftership APIs.
+ */
 @interface AfterShipKit : NSObject{
+    
+    /**
+     *  Request manager for all web request
+     */
     AFHTTPSessionManager *manager;
+    
+    /**
+     *  API key for Aftership APIs
+     */
     NSString *apiKey;
     
+    /**
+     *  Rate Limit for Aftership APIs
+     */
     NSInteger rateLimit;
+    
+    /**
+     *  Reset timer for rateLimit
+     */
     NSTimer *resetTimer;
+    
+    /**
+     *  Rate Limit remain for Aftership APIs
+     */
     NSInteger rateLimitRemaining;
 }
 
@@ -40,9 +62,7 @@
  *
  *  @param slug         Unique code of courier. Get courier slug here ( https://www.aftership.com/docs/api/4/couriers )
  *  @param trackNumber  Tracking Number for tracking info
- *  @param fields       List of fields to include in the response. Use comma for multiple values. Fields to include: tracking_postal_code,tracking_ship_date,tracking_account_number,tracking_key,tracking_destination_country, title,order_id,tag,checkpoints,
- checkpoint_time, message, country_name
- Defaults: none, Example: title,order_id
+ *  @param fields       List of fields to include in the response. Use comma for multiple values. Fields to include: tracking_postal_code,tracking_ship_date,tracking_account_number,tracking_key,tracking_destination_country, title,order_id,tag,checkpoints, Defaults: none, Example: title,order_id
  *  @param successBlock Passing result of AfterShipTrackingInfo
  *  @param errorBlock   Passing error for failure
  */

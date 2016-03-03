@@ -8,14 +8,17 @@
 
 #import <Foundation/Foundation.h>
 
+/** Base Object for all AfterShip response model*/
 @interface AfterShipBaseObject : NSObject
 
 /**
  *  All subclass must have this function
  *
- *  @param dict
+ *  @param dict Source for mapping values
  *
  *  @return object
+ *
+ *  @warning *Important:* Subclass without this will result in a runtime exception!
  */
 - (id)initWithInfo:(NSDictionary *)dict;
 

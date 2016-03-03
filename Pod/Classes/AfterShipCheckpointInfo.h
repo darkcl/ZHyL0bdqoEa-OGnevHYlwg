@@ -9,6 +9,9 @@
 #import <Foundation/Foundation.h>
 #import "AfterShipBaseObject.h"
 
+/**
+ *  AfterShip Tracking Checkpoint Model Class
+ */
 @interface AfterShipCheckpointInfo : AfterShipBaseObject
 
 /**

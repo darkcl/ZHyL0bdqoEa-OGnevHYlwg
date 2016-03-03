@@ -8,6 +8,9 @@
 
 #import <Foundation/Foundation.h>
 
+/**
+ *  Category for AfterShipKit errors
+ */
 @interface NSError (AfterShipKit)
 
 /**

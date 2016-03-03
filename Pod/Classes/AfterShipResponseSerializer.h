@@ -8,6 +8,9 @@
 
 #import <AFNetworking/AFNetworking.h>
 
+/**
+ *  AfterShipResponseSerializer is the response serializer for mapping API responses
+ */
 @interface AfterShipResponseSerializer : AFJSONResponseSerializer{
     Class responseClass;
     BOOL isNextResponseArray;
