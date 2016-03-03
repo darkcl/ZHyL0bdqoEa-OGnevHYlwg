@@ -1,0 +1,632 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>AfterShipKit Class Reference</title>
+    <link rel="stylesheet" type="text/css" href="../css/jazzy.css" />
+    <link rel="stylesheet" type="text/css" href="../css/highlight.css" />
+    <meta charset='utf-8'>
+    <script src="../js/jquery.min.js" defer></script>
+    <script src="../js/jazzy.js" defer></script>
+    
+  </head>
+  <body>
+    <a name="//apple_ref/objc/Class/AfterShipKit" class="dashAnchor"></a>
+    <a title="AfterShipKit Class Reference"></a>
+    <header>
+      <div class="content-wrapper">
+        <p><a href="../index.html">AfterShipKit Docs</a> (100% documented)</p>
+        <p class="header-right"><a href="https://github.com/darkcl/ZHyL0bdqoEa-OGnevHYlwg"><img src="../img/gh.png"/>View on GitHub</a></p>
+      </div>
+    </header>
+    <div class="content-wrapper">
+      <p id="breadcrumbs">
+        <a href="../index.html">AfterShipKit Reference</a>
+        <img id="carat" src="../img/carat.png" />
+        AfterShipKit Class Reference
+      </p>
+    </div>
+    <div class="content-wrapper">
+      <nav class="sidebar">
+        <ul class="nav-groups">
+          <li class="nav-group-name">
+            <a href="../Classes.html">Classes</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Classes/AfterShipBaseObject.html">AfterShipBaseObject</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/AfterShipCheckpointInfo.html">AfterShipCheckpointInfo</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/AfterShipKit.html">AfterShipKit</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/AfterShipTrackingInfo.html">AfterShipTrackingInfo</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <article class="main-content">
+        <section>
+          <section class="section">
+            <h1>AfterShipKit</h1>
+              <div class="declaration">
+                <div class="language">
+                  <pre class="highlight"><code><span class="k">@interface</span> <span class="nc">AfterShipKit</span> <span class="p">:</span> <span class="nc">NSObject</span> <span class="p">{</span>
+  <span class="n">AFHTTPSessionManager</span> <span class="o">*</span><span class="n">manager</span><span class="p">;</span>
+  <span class="n">NSString</span> <span class="o">*</span><span class="n">apiKey</span><span class="p">;</span>
+  <span class="n">NSInteger</span> <span class="n">rateLimit</span><span class="p">;</span>
+  <span class="n">NSTimer</span> <span class="o">*</span><span class="n">resetTimer</span><span class="p">;</span>
+  <span class="n">NSInteger</span> <span class="n">rateLimitRemaining</span><span class="p">;</span>
+<span class="p">}</span></code></pre>
+
+                </div>
+              </div>
+            <p>AfterShipKit is a collection of requests to consume Aftership APIs.</p>
+
+          </section>
+          <section class="section task-group-section">
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:objc(cs)AfterShipKit@manager"></a>
+                    <a name="//apple_ref/objc/Ivar/manager" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(cs)AfterShipKit@manager">manager</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Request manager for all web request</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Objective-C</p>
+                          <pre class="highlight"><code><span class="n">AFHTTPSessionManager</span> <span class="o">*</span><span class="n">manager</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/darkcl/ZHyL0bdqoEa-OGnevHYlwg/tree/v0.1.1/Pod/Classes/AfterShipKit.h#L23">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:objc(cs)AfterShipKit@apiKey"></a>
+                    <a name="//apple_ref/objc/Ivar/apiKey" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(cs)AfterShipKit@apiKey">apiKey</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>API key for Aftership APIs</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Objective-C</p>
+                          <pre class="highlight"><code><span class="n">NSString</span> <span class="o">*</span><span class="n">apiKey</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/darkcl/ZHyL0bdqoEa-OGnevHYlwg/tree/v0.1.1/Pod/Classes/AfterShipKit.h#L28">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:objc(cs)AfterShipKit@rateLimit"></a>
+                    <a name="//apple_ref/objc/Ivar/rateLimit" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(cs)AfterShipKit@rateLimit">rateLimit</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Rate Limit for Aftership APIs</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Objective-C</p>
+                          <pre class="highlight"><code><span class="n">NSInteger</span> <span class="n">rateLimit</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/darkcl/ZHyL0bdqoEa-OGnevHYlwg/tree/v0.1.1/Pod/Classes/AfterShipKit.h#L33">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:objc(cs)AfterShipKit@resetTimer"></a>
+                    <a name="//apple_ref/objc/Ivar/resetTimer" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(cs)AfterShipKit@resetTimer">resetTimer</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Reset timer for rateLimit</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Objective-C</p>
+                          <pre class="highlight"><code><span class="n">NSTimer</span> <span class="o">*</span><span class="n">resetTimer</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/darkcl/ZHyL0bdqoEa-OGnevHYlwg/tree/v0.1.1/Pod/Classes/AfterShipKit.h#L38">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:objc(cs)AfterShipKit@rateLimitRemaining"></a>
+                    <a name="//apple_ref/objc/Ivar/rateLimitRemaining" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(cs)AfterShipKit@rateLimitRemaining">rateLimitRemaining</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Rate Limit remain for Aftership APIs</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Objective-C</p>
+                          <pre class="highlight"><code><span class="n">NSInteger</span> <span class="n">rateLimitRemaining</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/darkcl/ZHyL0bdqoEa-OGnevHYlwg/tree/v0.1.1/Pod/Classes/AfterShipKit.h#L43">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:objc(cs)AfterShipKit(cm)sharedInstance"></a>
+                    <a name="//apple_ref/objc/Method/+sharedInstance" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(cs)AfterShipKit(cm)sharedInstance">+sharedInstance</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Singleton object for api manager</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Objective-C</p>
+                          <pre class="highlight"><code><span class="k">+</span> <span class="p">(</span><span class="n">AfterShipKit</span> <span class="o">*</span><span class="p">)</span><span class="n">sharedInstance</span><span class="p">;</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>Singleton object for AfterShipKit</p>
+
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/darkcl/ZHyL0bdqoEa-OGnevHYlwg/tree/v0.1.1/Pod/Classes/AfterShipKit.h#L51">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:objc(cs)AfterShipKit(cm)setAPIKey:"></a>
+                    <a name="//apple_ref/objc/Method/+setAPIKey:" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(cs)AfterShipKit(cm)setAPIKey:">+setAPIKey:</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Setting API Key for AfterShipKit</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Objective-C</p>
+                          <pre class="highlight"><code><span class="k">+</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">setAPIKey</span><span class="p">:(</span><span class="n">NSString</span> <span class="o">*</span><span class="p">)</span><span class="nv">key</span><span class="p">;</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>key</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>API Key for AfterShipKit</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/darkcl/ZHyL0bdqoEa-OGnevHYlwg/tree/v0.1.1/Pod/Classes/AfterShipKit.h#L58">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:objc(cs)AfterShipKit(cm)fetchTrackingInfoWithSlug:trackNumber:fields:success:failure:"></a>
+                    <a name="//apple_ref/objc/Method/+fetchTrackingInfoWithSlug:trackNumber:fields:success:failure:" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(cs)AfterShipKit(cm)fetchTrackingInfoWithSlug:trackNumber:fields:success:failure:">+fetchTrackingInfoWithSlug:trackNumber:fields:success:failure:</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Get tracking results of a single tracking.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Objective-C</p>
+                          <pre class="highlight"><code><span class="k">+</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">fetchTrackingInfoWithSlug</span><span class="p">:(</span><span class="n">NSString</span> <span class="o">*</span><span class="p">)</span><span class="nv">slug</span>
+                      <span class="nf">trackNumber</span><span class="p">:(</span><span class="n">NSString</span> <span class="o">*</span><span class="p">)</span><span class="nv">trackNumber</span>
+                           <span class="nf">fields</span><span class="p">:(</span><span class="n">NSArray</span><span class="o">&lt;</span><span class="n">NSString</span> <span class="o">*&gt;</span> <span class="o">*</span><span class="p">)</span><span class="nv">fields</span>
+                          <span class="nf">success</span><span class="p">:</span>
+                              <span class="p">(</span><span class="kt">void</span> <span class="p">(</span><span class="o">^</span><span class="p">)(</span><span class="n">AfterShipTrackingInfo</span> <span class="o">*</span><span class="p">))</span><span class="nv">successBlock</span>
+                          <span class="nf">failure</span><span class="p">:(</span><span class="kt">void</span> <span class="p">(</span><span class="o">^</span><span class="p">)(</span><span class="n">NSError</span> <span class="o">*</span><span class="p">))</span><span class="nv">errorBlock</span><span class="p">;</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>slug</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Unique code of courier. Get courier slug here ( <a href="https://www.aftership.com/docs/api/4/couriers">https://www.aftership.com/docs/api/4/couriers</a> )</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>trackNumber</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Tracking Number for tracking info</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>fields</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>List of fields to include in the response. Use comma for multiple values. Fields to include: tracking_postal_code,tracking_ship_date,tracking_account_number,tracking_key,tracking_destination_country, title,order_id,tag,checkpoints, Defaults: none, Example: title,order_id</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>successBlock</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Passing result of AfterShipTrackingInfo</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>errorBlock</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Passing error for failure</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/darkcl/ZHyL0bdqoEa-OGnevHYlwg/tree/v0.1.1/Pod/Classes/AfterShipKit.h#L69-L73">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:objc(cs)AfterShipKit(cm)createTrackingWithTrackingInfo:success:failure:"></a>
+                    <a name="//apple_ref/objc/Method/+createTrackingWithTrackingInfo:success:failure:" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(cs)AfterShipKit(cm)createTrackingWithTrackingInfo:success:failure:">+createTrackingWithTrackingInfo:success:failure:</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Create a tracking.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Objective-C</p>
+                          <pre class="highlight"><code><span class="k">+</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">createTrackingWithTrackingInfo</span><span class="p">:(</span><span class="n">AfterShipTrackingInfo</span> <span class="o">*</span><span class="p">)</span><span class="nv">trackingInfo</span>
+                               <span class="nf">success</span><span class="p">:(</span><span class="kt">void</span> <span class="p">(</span><span class="o">^</span><span class="p">)(</span><span class="n">AfterShipTrackingInfo</span> <span class="o">*</span><span class="p">))</span>
+                                           <span class="n">successBlock</span>
+                               <span class="n">failure</span><span class="o">:</span><span class="p">(</span><span class="kt">void</span> <span class="p">(</span><span class="o">^</span><span class="p">)(</span><span class="n">NSError</span> <span class="o">*</span><span class="p">))</span><span class="n">errorBlock</span><span class="p">;</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>trackingInfo</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>AfterShipTrackingInfo object for create tracking ingo</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>successBlock</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Passing result of AfterShipTrackingInfo</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>errorBlock</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Passing error for failure</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/darkcl/ZHyL0bdqoEa-OGnevHYlwg/tree/v0.1.1/Pod/Classes/AfterShipKit.h#L82-L84">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:objc(cs)AfterShipKit(cm)deleteTrackingWithTrackingNumber:andSlug:success:failure:"></a>
+                    <a name="//apple_ref/objc/Method/+deleteTrackingWithTrackingNumber:andSlug:success:failure:" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(cs)AfterShipKit(cm)deleteTrackingWithTrackingNumber:andSlug:success:failure:">+deleteTrackingWithTrackingNumber:andSlug:success:failure:</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Delete a tracking. (only for testing)</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Objective-C</p>
+                          <pre class="highlight"><code><span class="k">+</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">deleteTrackingWithTrackingNumber</span><span class="p">:(</span><span class="n">NSString</span> <span class="o">*</span><span class="p">)</span><span class="nv">trackingNumber</span>
+                                 <span class="nf">andSlug</span><span class="p">:(</span><span class="n">NSString</span> <span class="o">*</span><span class="p">)</span><span class="nv">slug</span>
+                                 <span class="nf">success</span><span class="p">:(</span><span class="kt">void</span> <span class="p">(</span><span class="o">^</span><span class="p">)(</span><span class="kt">void</span><span class="p">))</span><span class="nv">successBlock</span>
+                                 <span class="nf">failure</span><span class="p">:(</span><span class="kt">void</span> <span class="p">(</span><span class="o">^</span><span class="p">)(</span><span class="n">NSError</span> <span class="o">*</span><span class="p">))</span><span class="nv">errorBlock</span><span class="p">;</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>trackingNumber</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Tracking Number to delete</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>slug</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Tacking Slug id</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>successBlock</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Notify for success</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>errorBlock</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Passing error for failure</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/darkcl/ZHyL0bdqoEa-OGnevHYlwg/tree/v0.1.1/Pod/Classes/AfterShipKit.h#L93-L96">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:objc(cs)AfterShipKit(cm)rateLimitRemaining"></a>
+                    <a name="//apple_ref/objc/Method/+rateLimitRemaining" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(cs)AfterShipKit(cm)rateLimitRemaining">+rateLimitRemaining</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Getting current rate limit remaining</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Objective-C</p>
+                          <pre class="highlight"><code><span class="k">+</span> <span class="p">(</span><span class="n">NSInteger</span><span class="p">)</span><span class="n">rateLimitRemaining</span><span class="p">;</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>Current rate limit remain</p>
+
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/darkcl/ZHyL0bdqoEa-OGnevHYlwg/tree/v0.1.1/Pod/Classes/AfterShipKit.h#L103">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </section>
+        </section>
+        <section id="footer">
+          <p>&copy; 2016 <a class="link" href="http://darkcl.github.io" target="_blank" rel="external">Yeung Yiu Hung</a>. All rights reserved. (Last updated: 2016-03-03)</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.5.0</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+        </section>
+      </article>
+    </div>
+  </body>
+</div>
+</html>
