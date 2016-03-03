@@ -223,7 +223,7 @@
                                         XCTAssertEqualObjects(trackingInfo.originCountryIso3, @"USA");
                                         XCTAssertEqualObjects(trackingInfo.uniqueToken, @"WJ9PLQt8e");
                                         XCTAssertEqualObjects(trackingInfo.shipmentType, @"GROUND");
-                                        XCTAssertEqual(trackingInfo.shipmentWeight, @3.00);
+                                        XCTAssertEqualObjects(trackingInfo.shipmentWeight, @3.00);
                                         XCTAssertEqualObjects(trackingInfo.shipmentWeightUnit, @"LBS");
                                         XCTAssertEqualObjects(trackingInfo.signedBy, @"FRONT DOOR");
                                         XCTAssertEqualObjects(trackingInfo.smses, @[]);
